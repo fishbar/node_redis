@@ -25,7 +25,11 @@ Simple example, included as `examples/simple.js`:
 
 ```js
     var redis = require("redis"),
-        client = redis.createClient();
+        port = 6379,
+        host = '127.0.0.1',
+        options = {},
+        client = redis.createClient(port, host, options); 
+    // or you can just call `redis.createClient()`
 
     // if you'd like to select database 3, instead of 0 (default), call
     // client.select(3, function() { /* ... */ });
@@ -57,6 +61,20 @@ This will display:
         1: hashtest 2
     mjr:~/work/node_redis (master)$
 
+the `options` above can passed with following properties:
+
+    * `max_attempts`
+    * `command_queue_high_water`
+    * `command_queue_low_water`
+    * `connect_timeout`     unit ms
+    * `enable_offline_queue`
+    * `retry_max_delay`
+    * `auth_pass`
+    * `socket_nodelay` 
+    * `no_ready_check` ready checking
+    * `parser`
+    * `return_buffers`
+    * `detect_buffers`
 
 ## Performance
 
